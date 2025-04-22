@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/EddieO23/proshop-MERN#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
