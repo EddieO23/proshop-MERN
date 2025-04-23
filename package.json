@@ -6,6 +6,8 @@
   "scripts": {
     "start": "nodemon backend/server.js",
     "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "data:import" : "node backend/seeder.js",
+    "data:destroy":  "node backend/seeder.js -d",
     "start:frontend": "npm --prefix frontend run dev",
     "start:backend": "nodemon backend/server.js"
   },
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/EddieO23/proshop-MERN#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "express": "^5.1.0",
     "mongoose": "^8.13.2"
   },
