@@ -14,6 +14,7 @@ import './assets/styles/index.css';
 import App from './App.jsx';
 
 import HomeScreen from './Pages/HomeScreen.jsx';
+import CartPage from './Pages/CartPage.jsx';
 import ProductPage from './Pages/ProductPage.jsx';
 
 const router = createBrowserRouter(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/product/:id' element={<ProductPage />} />
+      <Route path='/cart' element={<CartPage />} />
     </Route>
   )
 );
