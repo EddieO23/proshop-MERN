@@ -16,6 +16,8 @@ import App from './App.jsx';
 import HomeScreen from './Pages/HomeScreen.jsx';
 import CartPage from './Pages/CartPage.jsx';
 import ProductPage from './Pages/ProductPage.jsx';
+import LoginPage from './Pages/LoginPage.jsx';
+import RegisterPage from './Pages/RegisterPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,10 @@ const router = createBrowserRouter(
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/product/:id' element={<ProductPage />} />
       <Route path='/cart' element={<CartPage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/shipping' element={<h1>Welcome to Shipping Page</h1>} />
+
     </Route>
   )
 );
