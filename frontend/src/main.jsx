@@ -15,6 +15,7 @@ import './assets/styles/index.css';
 import App from './App.jsx';
 
 import PrivateRoute from './components/PrivateRoute.jsx';
+import AdminRoute from './components/AdminRoute.jsx';
 import HomeScreen from './Pages/HomeScreen.jsx';
 import CartPage from './Pages/CartPage.jsx';
 import ProductPage from './Pages/ProductPage.jsx';
@@ -25,6 +26,8 @@ import PaymentPage from './Pages/PaymentPage.jsx';
 import PlaceOrderPage from './Pages/PlaceOrderPage.jsx';
 import OrderPage from './Pages/OrderPage.jsx';
 import ProfilePage from './Pages/ProfilePage.jsx';
+import OrderListPage from './Pages/admin/OrderListPage.jsx';
+import ProductListPage from './Pages/admin/ProductListPage.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +44,10 @@ const router = createBrowserRouter(
         <Route path='/placeorder' element={<PlaceOrderPage />} />
         <Route path='/order/:id' element={<OrderPage/>} />
         <Route path='/profile' element={<ProfilePage/>} />
+      </Route>
+      <Route path='' element={<AdminRoute />}>
+        <Route path='/admin/orderlist' element={<OrderListPage />} />
+        <Route path='/admin/productlist' element={<ProductListPage />} />
       </Route>
     </Route>
   )
