@@ -8,6 +8,7 @@ import {
   ListGroup,
   Card,
   Button,
+  Form
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -49,6 +50,22 @@ function ProductPage() {
     dispatch(addToCart({ ...product, qty }));
     navigate('/cart');
   };
+
+  async function submitHandler (e) {
+    e.preventDefault()
+
+    try {
+      await createReview({
+        productId, rating, comment
+      }).unwrap()
+      refetch()
+      toast.success('Review submitted')
+      setRating(0)
+      setComment('')
+    } catch (err) {
+      toast.error(err?.data?.message || err.error)
+    }
+  }
 
   return (
     <>
@@ -158,8 +175,10 @@ function ProductPage() {
                   <ListGroup.Item>
                     <h2>Write a customer review</h2 >
                     {loadingProductReview && <Loader/>}
+                    
+                    
                     {userInfo ? (
-                      <Form>
+                      <Form onSubmit={submitHandler}>
                         <Form.Group controlId='rating' className='my-2'>
                         <Form.Label>Rating</Form.Label>
                         <Form.Control as='select' value={rating} onChange={(e) => setRating(Number(e.target.value))}>
@@ -175,9 +194,13 @@ function ProductPage() {
                           <Form.Label>Comment</Form.Label>
                           <Form.Control as='textarea' row='3' value={comment} onChange={(e) => setComment(e.target.value)}></Form.Control>
                         </Form.Group>
-                        <Button disabled=></Button>
+                        <Button disabled={loadingProductReview} type="submit" variant='primary'>Submit</Button>
                       </Form>
-                    ) : ()}
+                    ) : (
+                      <Message>
+                        Please <Link to={'/login'}>log in</Link> to write a review{' '}
+                      </Message>
+                    )}
                   </ListGroup.Item>
                   </ListGroup>
                 </Col>
