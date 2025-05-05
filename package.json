@@ -9,7 +9,8 @@
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
     "start:frontend": "npm --prefix frontend run dev",
-    "start:backend": "nodemon backend/server.js"
+    "start:backend": "nodemon backend/server.js",
+    "build" : "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
